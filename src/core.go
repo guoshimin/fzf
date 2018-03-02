@@ -43,7 +43,7 @@ Matcher  -> EvtHeader         -> Terminal (update header)
 */
 
 // Run starts fzf
-func Run(opts *Options, in io.Reader) {
+func Run(opts *Options, in io.Reader) error {
 	sort := opts.Sort > 0
 	sortCriteria = opts.Criteria
 
@@ -274,4 +274,5 @@ func Run(opts *Options, in io.Reader) {
 			time.Sleep(dur)
 		}
 	}
+	return nil
 }
