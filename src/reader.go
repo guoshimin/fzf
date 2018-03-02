@@ -50,7 +50,7 @@ func (r *Reader) fin(success bool) {
 }
 
 // ReadSource reads data from the default command or from standard input
-func (r *Reader) ReadSource(in Reader) {
+func (r *Reader) ReadSource(in io.Reader) {
 	r.startEventPoller()
 	r.feed(in)
 	r.fin(true)

@@ -28,7 +28,6 @@ package fzf
 import (
 	"fmt"
 	"io"
-	"os"
 	"time"
 
 	"github.com/guoshimin/fzf/src/util"
