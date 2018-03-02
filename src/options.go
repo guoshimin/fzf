@@ -1251,7 +1251,7 @@ func postProcessOptions(opts *Options) {
 
 // ParseOptions parses command-line options
 func ParseOptions() *Options {
-	opts := defaultOptions()
+	opts := DefaultOptions()
 
 	// Options from Env var
 	words, _ := shellwords.Parse(os.Getenv("FZF_DEFAULT_OPTS"))

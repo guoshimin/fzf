@@ -3,7 +3,6 @@ package fzf
 import (
 	"bufio"
 	"io"
-	"os"
 	"sync/atomic"
 	"time"
 
