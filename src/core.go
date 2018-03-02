@@ -253,9 +253,9 @@ func Run(opts *Options, in io.Reader) error {
 										opts.Printer(val.Get(i).item.AsString(opts.Ansi))
 									}
 									if count > 0 {
-										return nil
+										return
 									}
-									return fmt.Errorf("no match")
+									return
 								}
 								deferred = false
 								terminal.startChan <- true
