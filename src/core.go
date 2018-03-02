@@ -27,10 +27,11 @@ package fzf
 
 import (
 	"fmt"
+	"io"
 	"os"
 	"time"
 
-	"github.com/junegunn/fzf/src/util"
+	"github.com/guoshimin/fzf/src/util"
 )
 
 /*
@@ -43,18 +44,9 @@ Matcher  -> EvtHeader         -> Terminal (update header)
 */
 
 // Run starts fzf
-func Run(opts *Options, revision string) {
+func Run(opts *Options, in io.Reader) {
 	sort := opts.Sort > 0
 	sortCriteria = opts.Criteria
-
-	if opts.Version {
-		if len(revision) > 0 {
-			fmt.Printf("%s (%s)\n", version, revision)
-		} else {
-			fmt.Println(version)
-		}
-		os.Exit(exitOk)
-	}
 
 	// Event channel
 	eventBox := util.NewEventBox()
@@ -121,7 +113,7 @@ func Run(opts *Options, revision string) {
 		reader := NewReader(func(data []byte) bool {
 			return chunkList.Push(data)
 		}, eventBox, opts.ReadZero)
-		go reader.ReadSource()
+		go reader.ReadSource(in)
 	}
 
 	// Matcher
@@ -179,9 +171,9 @@ func Run(opts *Options, revision string) {
 			}
 		}
 		if found {
-			os.Exit(exitOk)
+			return nil
 		}
-		os.Exit(exitNoMatch)
+		return fmt.Errorf("no match")
 	}
 
 	// Synchronous search
@@ -262,9 +254,9 @@ func Run(opts *Options, revision string) {
 										opts.Printer(val.Get(i).item.AsString(opts.Ansi))
 									}
 									if count > 0 {
-										os.Exit(exitOk)
+										return nil
 									}
-									os.Exit(exitNoMatch)
+									return fmt.Errorf("no match")
 								}
 								deferred = false
 								terminal.startChan <- true

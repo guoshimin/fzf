@@ -4,7 +4,7 @@ import (
 	"regexp"
 	"testing"
 
-	"github.com/junegunn/fzf/src/util"
+	"github.com/guoshimin/fzf/src/util"
 )
 
 func newItem(str string) *Item {

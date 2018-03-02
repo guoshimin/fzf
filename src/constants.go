@@ -4,7 +4,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/junegunn/fzf/src/util"
+	"github.com/guoshimin/fzf/src/util"
 )
 
 const (

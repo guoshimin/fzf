@@ -8,9 +8,9 @@ import (
 	"strings"
 	"unicode/utf8"
 
-	"github.com/junegunn/fzf/src/algo"
-	"github.com/junegunn/fzf/src/tui"
-	"github.com/junegunn/fzf/src/util"
+	"github.com/guoshimin/fzf/src/algo"
+	"github.com/guoshimin/fzf/src/tui"
+	"github.com/guoshimin/fzf/src/util"
 
 	"github.com/mattn/go-shellwords"
 )
@@ -191,7 +191,7 @@ type Options struct {
 	Version     bool
 }
 
-func defaultOptions() *Options {
+func DefaultOptions() *Options {
 	return &Options{
 		Fuzzy:       true,
 		FuzzyAlgo:   algo.FuzzyMatchV2,

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/junegunn/fzf/src/tui"
+	"github.com/guoshimin/fzf/src/tui"
 )
 
 func TestExtractColor(t *testing.T) {
