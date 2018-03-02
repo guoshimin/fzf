@@ -155,7 +155,7 @@ func Run(opts *Options, in io.Reader) {
 					}
 					return false
 				}, eventBox, opts.ReadZero)
-			reader.ReadSource()
+			reader.ReadSource(in)
 		} else {
 			eventBox.Unwatch(EvtReadNew)
 			eventBox.WaitFor(EvtReadFin)
